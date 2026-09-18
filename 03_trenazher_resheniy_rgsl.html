@@ -1,0 +1,120 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>РГС Жизнь — тренажёр решений</title><style>
+:root{
+ --red:#c9003e;--red2:#a90036;--blue:#2f3fc8;--blue2:#4d45d8;--ink:#1b1c2d;--muted:#6b6f82;
+ --bg:#f8f8fc;--panel:#fff;--line:#e3e4ee;--dark:#161638;--shadow:0 24px 68px rgba(47,63,200,.15)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#fbfbfe,#f4f4fa 55%,#fafafe);color:var(--ink);font:16px/1.56 Arial,Helvetica,sans-serif}
+a{color:inherit}.layout{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;padding:22px 18px;background:linear-gradient(180deg,#17163d,#10102d);color:#fff;border-right:1px solid rgba(255,255,255,.08);z-index:20}
+.brandbox{display:flex;justify-content:center;align-items:center;background:#fff;border-radius:22px;padding:16px;box-shadow:0 16px 42px rgba(0,0,0,.15)}
+.brandbox img{display:block;width:94px;max-width:100%;height:auto}
+.kicker{margin-top:18px;color:#ff99b8;font-size:12px;text-transform:uppercase;letter-spacing:.17em;font-weight:800}.course-title{font-size:20px;font-weight:800;margin:4px 0 16px}
+.nav{display:grid;gap:8px;margin-top:18px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;text-decoration:none;padding:10px;border-radius:14px;color:#e5e3f2}
+.nav a:hover,.nav a.active{background:rgba(255,255,255,.1)}.nav i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#383677;font-style:normal;font-weight:800}
+.profile{margin-top:18px;padding:14px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.05)}
+.profile input{width:100%;margin-top:8px;padding:10px 11px;background:#11102e;color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:10px}
+.profile-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+button,.btn{appearance:none;border:0;border-radius:12px;padding:11px 14px;background:linear-gradient(135deg,var(--red),#e01b5c);color:white;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;justify-content:center;align-items:center}
+button.secondary,.btn.secondary{background:#393777}.progress{height:7px;background:#34336c;border-radius:999px;overflow:hidden;margin-top:10px}.progress>span{display:block;height:100%;background:linear-gradient(90deg,#ff7ba3,#7f86ff);width:0}
+.main{min-width:0}.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:rgba(251,251,254,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.page-switch{display:flex;gap:8px;flex-wrap:wrap}.page-switch a{font-size:13px;text-decoration:none;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.content{max-width:1180px;margin:auto;padding:40px 34px 90px}.hero{position:relative;overflow:hidden;border-radius:30px;padding:52px;min-height:420px;background:linear-gradient(135deg,#c8003d 0%,#b9003a 40%,#4d3ed1 100%);color:#fff;box-shadow:var(--shadow)}
+.hero:before{content:"";position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 70px rgba(255,255,255,.025)}
+.hero:after{content:"";position:absolute;left:-60px;bottom:-120px;width:560px;height:270px;background:linear-gradient(18deg,transparent 35%,rgba(255,255,255,.13) 36% 50%,transparent 51%);transform:rotate(-3deg)}
+.hero>*{position:relative;z-index:2}.eyebrow{display:inline-flex;padding:7px 10px;border:1px solid rgba(255,255,255,.25);border-radius:999px;color:#fff2f7;font-size:12px;text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(40px,6vw,76px);line-height:.98;max-width:850px;margin:22px 0 18px;letter-spacing:-.045em}.lead{font-size:19px;color:#f7edf3;max-width:810px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 34px}
+.stat{padding:22px;border-radius:20px;border:1px solid var(--line);background:#fff}.stat strong{display:block;font-size:28px;color:var(--red)}.stat span{color:var(--muted);font-size:14px}
+.section{padding:42px 0;border-bottom:1px solid var(--line)}.section h2{font-size:clamp(28px,4vw,46px);margin:0 0 14px;letter-spacing:-.03em}.section-intro{max-width:860px;color:#62677a;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{min-width:0;padding:22px;border:1px solid var(--line);border-radius:20px;background:#fff}.card h3{margin:0 0 8px;font-size:19px}.card p{margin:0;color:#676b7e}
+.tag,.badge{display:inline-block;margin-bottom:12px;padding:6px 9px;border-radius:999px;background:#fde8ef;color:#9e1245;font-size:12px}
+.timeline{display:grid;gap:12px}.step{display:grid;grid-template-columns:50px minmax(0,1fr);gap:14px;align-items:start;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.step b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff}.step p{margin:4px 0 0;color:#676c80}
+.callout{padding:24px;border-left:4px solid var(--red);background:#fff0f4;border-radius:0 18px 18px 0}
+.rolegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.role{padding:24px;border-radius:22px;background:linear-gradient(145deg,#28265e,#171640);color:white}.role h3{font-size:22px;margin:0 0 8px}.role ul{padding-left:20px;color:#e4e2f0}
+.trainer{display:grid;grid-template-columns:1fr 1fr;gap:18px}.question,.result{padding:26px;border-radius:22px;border:1px solid var(--line);background:#fff}
+.options{display:grid;gap:10px;margin-top:16px}.option{display:block;width:100%;text-align:left;background:#3b3aa0}.option:hover{background:#4c4bc2}
+.footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#75798b;font-size:13px;padding-top:28px}
+@media(max-width:980px){.layout{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.nav{grid-template-columns:repeat(3,1fr)}.content{padding:26px 20px 70px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}.hero{padding:36px}}
+@media(max-width:620px){.sidebar{padding:16px}.nav{grid-template-columns:1fr 1fr}.topbar{padding:11px 14px}.crumb{display:none}.content{padding:18px 14px 55px}.hero{padding:26px 20px;min-height:360px}h1{font-size:42px}.lead{font-size:16px}.stats,.grid,.rolegrid,.trainer{grid-template-columns:1fr}.profile-actions{grid-template-columns:1fr}.section{padding:32px 0}}
+</style></head><body><div class="layout"><aside class="sidebar">
+<div class="brandbox"><img src="data:image/png;base64,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" alt="РГС Жизнь"></div>
+<div class="kicker">Эксперты по жизни</div><div class="course-title">РГС Жизнь · система обучения</div>
+<nav class="nav"><a href="index.html" class=""><i>1</i><span>Система обучения</span></a><a href="02_roli_v_sisteme_obucheniya_rgsl.html" class=""><i>2</i><span>Роли и развитие</span></a><a href="03_trenazher_resheniy_rgsl.html" class="active"><i>3</i><span>Тренажёр решений</span></a></nav>
+<div class="profile"><strong id="profileLabel">Профиль обучения</strong>
+<div style="color:#c8c6dd;font-size:13px;margin-top:4px">Имя необязательно — весь курс доступен без входа.</div>
+<input id="nameInput" placeholder="Ваше имя (необязательно)">
+<div class="profile-actions"><button onclick="saveName()">Сохранить</button><button class="secondary" onclick="skipName()">Без входа</button></div>
+<div class="progress"><span id="progressBar"></span></div></div>
+<div style="margin-top:16px;font-size:12px;color:#b9b7d3">GitHub: <a href="https://github.com/ybxjnxfjvc-byte/index35" target="_blank">index35</a></div>
+</aside><main class="main"><header class="topbar"><div class="crumb">РГС Жизнь / Практический тренажёр</div>
+<div class="page-switch"><a href="index.html">01</a><a href="02_roli_v_sisteme_obucheniya_rgsl.html">02</a><a href="03_trenazher_resheniy_rgsl.html">03</a></div></header>
+<div class="content">
+<section class="hero"><span class="eyebrow">Страница 03 · тренажёр</span><h1>Подбери решение по страхованию жизни</h1>
+<p class="lead">Клиент формулирует цель, а не название программы. Определи, какой тип решения подходит лучше всего, и посмотри, что нужно уточнить до рекомендации.</p>
+<div class="hero-actions"><button onclick="nextCase()">Начать тренажёр</button><a class="btn secondary" href="index.html">Вернуться к системе</a></div></section>
+
+<section class="section"><h2>Практика на реальной логике продуктов</h2>
+<p class="section-intro">Сценарии построены на официальных правилах страхования жизни РГС Жизнь и открытой продуктовой логике компании: страховая защита, накопление, участие в инвестиционном доходе и дополнительные риски. Конкретные ставки и доходности намеренно не зашиты — они зависят от программы и условий договора.</p>
+
+<div class="trainer">
+<div class="question"><span class="badge" id="caseNo">Ситуация</span><h3 id="qTitle">Нажмите «Начать тренажёр»</h3><p id="qText">Появится клиентская цель.</p><div class="options" id="options"></div></div>
+<div class="result"><span class="badge">Разбор</span><h3 id="rTitle">Здесь появится обратная связь</h3><p id="rText">После выбора вы увидите основной тип решения и важные уточнения.</p><div id="score" style="margin-top:18px;color:#77798b"></div></div>
+</div></section>
+
+<section class="section"><h2>Карта решений</h2><div class="grid">
+<div class="card"><span class="tag">Защита</span><h3>Страхование жизни и здоровья</h3><p>Для финансовой поддержки при предусмотренных договором событиях: смерть, инвалидность, критические заболевания и другие риски.</p></div>
+<div class="card"><span class="tag">Накопление</span><h3>Долгосрочная программа</h3><p>Для формирования капитала к определённой дате с одновременно предусмотренной страховой защитой.</p></div>
+<div class="card"><span class="tag">Инвестиционная составляющая</span><h3>Программы с участием в доходе</h3><p>Для клиентов, которые понимают особенности инвестиционной части и готовы обсуждать риск, срок и структуру дохода.</p></div>
+<div class="card"><span class="tag">Семья</span><h3>Финансовая защита близких</h3><p>Подбор страховой суммы, рисков и срока с учётом дохода, обязательств и состава семьи.</p></div>
+<div class="card"><span class="tag">Дополнительные риски</span><h3>Расширение покрытия</h3><p>Госпитализация, критические заболевания, хирургические вмешательства, травмы и другие риски — если предусмотрены конкретной программой.</p></div>
+<div class="card"><span class="tag">Сервис</span><h3>Обслуживание договора</h3><p>Изменения, документы, выплаты, статусы и сопровождение клиента на протяжении срока программы.</p></div>
+</div></section>
+
+<section class="section"><div class="callout"><strong>Правило консультанта:</strong> сначала цель, срок и финансовая ситуация клиента; затем — страховая защита и структура программы; только после этого — обсуждение потенциального дохода и конкретных условий.</div></section>
+
+<script>
+const cases=[
+ {t:'Капитал к образованию ребёнка',q:'Клиент хочет через 10 лет накопить определённую сумму и одновременно иметь страховую защиту на период накопления.',a:'Накопительное страхование жизни',x:['Накопительное страхование жизни','Только защита от несчастного случая','Краткосрочная программа','Разовая выплата без договора'],e:'Логично обсуждать накопительное страхование жизни. Нужно уточнить срок, размер и периодичность взносов, страховую сумму и риски. Важно объяснить условия досрочного прекращения.'},
+ {t:'Защитить доход семьи',q:'Основной кормилец хочет, чтобы семья получила финансовую поддержку при тяжёлом событии.',a:'Страхование жизни с рисковым покрытием',x:['Страхование жизни с рисковым покрытием','Только инвестиционная стратегия','Короткий накопительный продукт','Ничего не нужно'],e:'Основная потребность — страховая защита. Размер покрытия должен соотноситься с обязательствами семьи, доходом и сроком, на который нужна поддержка.'},
+ {t:'Интерес к инвестиционному доходу',q:'Клиент готов обсуждать более сложную программу и хочет сочетать страховую защиту с инвестиционной составляющей.',a:'Программа с участием в инвестиционном доходе',x:['Программа с участием в инвестиционном доходе','Только ДМС','ОСАГО','Каско'],e:'Подходит обсуждение программы с участием в инвестиционном доходе. Нельзя представлять будущий инвестиционный результат как гарантированный, если договором это не предусмотрено.'},
+ {t:'Критическое заболевание',q:'Клиент особенно боится финансовых последствий тяжёлого диагноза и хочет расширить защиту.',a:'Дополнительный риск критического заболевания',x:['Дополнительный риск критического заболевания','Сократить покрытие','Только накопление','Не обсуждать риски'],e:'Нужно рассмотреть дополнительное покрытие критических заболеваний, если оно предусмотрено выбранной программой. Обязательно объяснить определения и исключения.'},
+ {t:'Нерегулярный доход',q:'Клиенту нравится идея долгосрочного накопления, но доход нестабилен и он не уверен в возможности регулярно платить взносы.',a:'Сначала оценить комфортный режим взносов',x:['Сразу оформить максимальный взнос','Сначала оценить комфортный режим взносов','Скрыть последствия пропусков','Обещать возможность отменить любые условия'],e:'Сначала нужно проверить реалистичность взносов и правила программы. Долгосрочный договор должен соответствовать финансовой устойчивости клиента.'},
+ {t:'Хочет забрать деньги раньше срока',q:'Клиент спрашивает, сможет ли вернуть всю сумму через несколько месяцев после заключения долгосрочного договора.',a:'Объяснить условия досрочного прекращения',x:['Гарантировать возврат всей суммы','Объяснить условия досрочного прекращения','Не отвечать','Переключить тему на доходность'],e:'Нужно до оформления объяснить выкупные суммы и последствия досрочного прекращения по конкретному договору. Это критически важная часть корректной консультации.'}
+];
+let idx=-1,scoreN=0,answered=0;
+function nextCase(){
+ idx=(idx+1)%cases.length;const c=cases[idx];
+ document.getElementById('caseNo').textContent='Ситуация '+(idx+1)+' из '+cases.length;
+ document.getElementById('qTitle').textContent=c.t;document.getElementById('qText').textContent=c.q;
+ document.getElementById('rTitle').textContent='Выберите вариант';document.getElementById('rText').textContent='После ответа появится разбор.';
+ const o=document.getElementById('options');o.innerHTML='';
+ c.x.forEach(v=>{const b=document.createElement('button');b.className='option';b.textContent=v;b.onclick=()=>answer(v);o.appendChild(b)});
+ document.getElementById('score').textContent='Результат: '+scoreN+' / '+answered;
+}
+function answer(v){
+ const c=cases[idx];answered++;const ok=v===c.a;if(ok)scoreN++;
+ document.getElementById('rTitle').textContent=ok?'Верно':'Основной контур: '+c.a;
+ document.getElementById('rText').textContent=c.e;
+ document.getElementById('score').textContent='Результат: '+scoreN+' / '+answered;
+ state.trainer=scoreN;save();
+}
+</script>
+<footer class="footer"><span>Кейс 35 · ООО СК «Росгосстрах Жизнь»</span>
+<span><a href="https://github.com/ybxjnxfjvc-byte/index35" target="_blank">GitHub index35</a> · <a href="https://ybxjnxfjvc-byte.github.io/index35/" target="_blank">GitHub Pages</a></span></footer></div>
+</main></div>
+<script>
+const KEY='rgsl_index35_state_v1';
+let state={name:'',guest:false,visited:{},trainer:0};
+try{state=Object.assign(state,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderProfile()}
+function renderProfile(){const n=document.getElementById('nameInput'),l=document.getElementById('profileLabel'),b=document.getElementById('progressBar');if(n&&state.name)n.value=state.name;if(l)l.textContent=state.name?state.name:(state.guest?'Гость':'Профиль обучения');if(b)b.style.width=Math.min(100,Object.keys(state.visited||{}).length/3*100)+'%'}
+function saveName(){const n=document.getElementById('nameInput');state.name=(n?.value||'').trim();state.guest=false;save()}
+function skipName(){state.name='';state.guest=true;save()}
+function markPage(id){state.visited=state.visited||{};state.visited[id]=true;save()}
+document.addEventListener('DOMContentLoaded',renderProfile);
+</script>
+<script>markPage('p3')</script></body></html>
